@@ -1,19 +1,20 @@
 #include <iostream>
 #include <string>
+std::string str(){
+    std::string str;
+    std::cin >> str;
+    return str;
+}
 int main() {
-   std::string str1;
-   std::string str2;
-   std::string str3;
    std::cout<<"Input playing field in the format\n";
    std::cout<<"X..\n";
    std::cout<<".O.\n";
    std::cout<<"..X\n";
-   std::cin >> str1;
-   std::cin >> str2;
-   std::cin >> str3;
-   std::cout <<std::endl;
-    std::cout <<str1<<std::endl;
-    std::cout <<str2<<std::endl;
-    std::cout <<str3<<std::endl;
+    for (int i = 0; i < 3; ++i) {
+        str();
+    }
+
+
+
     return 0;
 }
