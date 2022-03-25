@@ -6,10 +6,10 @@ std::string str(){
     return str;
 }
 int main() {
-   std::cout<<"Input playing field in the format\n";
-   std::cout<<"X..\n";
-   std::cout<<".O.\n";
-   std::cout<<"..X\n";
+   std::cout<<"Input the playing field in the format. Valid characters 'X' 'O' and '.'\n";
+   std::cout<<"\t\tX..\n";
+   std::cout<<"\t\t.O.\n";
+   std::cout<<"\t\t..X\n";
     for (int i = 0; i < 3; ++i) {
         str();
     }
