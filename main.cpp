@@ -18,14 +18,15 @@ int combinations(std::string str1,std::string str2,std::string str3){
         if(str1[i]==str2[i]==str3[i]=='O')
             return 0;
     }
-        if (str1[0]==str1[1]==str1[2]=='X' || str2[0]==str2[1]==str2[2]=='X' || str3[0]==str3[1]==str3[2]=='X')
+        if (str1[0]=='X'&& str1[1]=='X'&&str1[2]=='X' || str2[0]=='X'&&str2[1]=='X'&&str2[2]=='X'
+            || str3[0]=='X'&&str3[1]=='X'&& str3[2]=='X'|| str1[0]=='X'&& str2[1]=='X'&& str3[2]=='X'
+            || str1[2]=='X'&& str2[1]=='X'&& str3[0]=='X' )
             return 1;
-        if(str1[0]==str1[1]==str1[2]=='O' || str2[0]==str2[1]==str2[2]=='O' || str3[0]==str3[1]==str3[2]=='O')
+        if(str1[0]=='O'&& str1[1]=='O'&&str1[2]=='O' || str2[0]=='O'&&str2[1]=='O'&&str2[2]=='O'
+            || str3[0]=='O'&&str3[1]=='O'&& str3[2]=='O'|| str1[0]=='O'&& str2[1]=='O'&& str3[2]=='O'
+            || str1[2]=='O'&& str2[1]=='O'&& str3[0]=='O')
             return 0;
-        if (str1[0]==str2[1]==str3[2]=='X' | str1[2]==str2[1]==str3[0]=='X')
-            return 1;
-        if(str1[0]==str2[1]==str3[2]=='O' | str1[2]==str2[1]==str3[0]=='O')
-            return 0;
+
     }
 
 int main() {
