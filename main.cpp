@@ -22,6 +22,10 @@ int combinations(std::string str1,std::string str2,std::string str3){
             return 1;
         if(str1[0]==str1[1]==str1[2]=='O' || str2[0]==str2[1]==str2[2]=='O' || str3[0]==str3[1]==str3[2]=='O')
             return 0;
+        if (str1[0]==str2[1]==str3[2]=='X' | str1[2]==str2[1]==str3[0]=='X')
+            return 1;
+        if(str1[0]==str2[1]==str3[2]=='O' | str1[2]==str2[1]==str3[0]=='O')
+            return 0;
     }
 
 int main() {
