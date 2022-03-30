@@ -37,14 +37,16 @@ int combinations(std::string str1,std::string str2,std::string str3){
             || str3[0]=='O'&&str3[1]=='O'&& str3[2]=='O'|| str1[0]=='O'&& str2[1]=='O'&& str3[2]=='O'
             || str1[2]=='O'&& str2[1]=='O'&& str3[0]=='O')
             oLine++;
-    if(xLine==1 && X>Y && oLine!=xLine)
+    if(xLine==1 && X>Y && oLine!=xLine&& oLine==0)
     {
         return 1;
     }
-    if(oLine==1)
+    else if(oLine==1 && Y<=X && oLine!=xLine)
     {
         return 0;
     }
+    else if (Y>X)
+        return 2;
 }
 int main() {
    std::cout<<"Input the playing field in the format.\nValid characters 'X' 'O' and '.'\n";
@@ -55,11 +57,14 @@ int main() {
    std::cin >> str1>>str2>>str3;
    if (checking(str1)&&checking(str2)&&checking(str3)){
        std::cout<<"OK\n";
-       int result=combinations(str1,str2,str3);
+       int result=100;
+        result=combinations(str1,str2,str3);
        if(result==1)
            std::cout<<"X Petya won\n";
        else if(result==0)
            std::cout<<"O Vanya won\n";
+       else if(result==2)
+           std::cout<<"Incorrect\n";
        else
            std::cout<<"Nobody\n";
    }
