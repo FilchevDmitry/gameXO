@@ -12,23 +12,40 @@ bool checking (std::string str){
     return false;
 }
 int combinations(std::string str1,std::string str2,std::string str3){
+   int X=0,Y=0;
+   int xLine=0, oLine=0;
     for (int i = 0; i < 3; ++i) {
-        if (str1[i]==str2[i]==str3[i]=='X')
-            return 1;
-        if(str1[i]==str2[i]==str3[i]=='O')
-            return 0;
+        if (str1[i]=='X'&&str2[i]=='X'&& str3[i]=='X')
+            xLine++;
+        if(str1[i]=='O'&& str2[i]=='O' && str3[i]=='O')
+            oLine++;
+
+    }
+    for (int i = 0; i < 3; ++i) {
+        if (str1[i]=='X') X++;
+        if (str2[i]=='X') X++;
+        if (str3[i]=='X') X++;
+        if (str1[i]=='O') Y++;
+        if (str2[i]=='O') Y++;
+        if (str3[i]=='O') Y++;
     }
         if (str1[0]=='X'&& str1[1]=='X'&&str1[2]=='X' || str2[0]=='X'&&str2[1]=='X'&&str2[2]=='X'
             || str3[0]=='X'&&str3[1]=='X'&& str3[2]=='X'|| str1[0]=='X'&& str2[1]=='X'&& str3[2]=='X'
             || str1[2]=='X'&& str2[1]=='X'&& str3[0]=='X' )
-            return 1;
+            xLine++;
         if(str1[0]=='O'&& str1[1]=='O'&&str1[2]=='O' || str2[0]=='O'&&str2[1]=='O'&&str2[2]=='O'
             || str3[0]=='O'&&str3[1]=='O'&& str3[2]=='O'|| str1[0]=='O'&& str2[1]=='O'&& str3[2]=='O'
             || str1[2]=='O'&& str2[1]=='O'&& str3[0]=='O')
-            return 0;
-
+            oLine++;
+    if(xLine==1 && X>Y && oLine!=xLine)
+    {
+        return 1;
     }
-
+    if(oLine==1)
+    {
+        return 0;
+    }
+}
 int main() {
    std::cout<<"Input the playing field in the format.\nValid characters 'X' 'O' and '.'\n";
    std::cout<<"X..\n";
@@ -37,13 +54,14 @@ int main() {
    std::string str1,str2,str3;
    std::cin >> str1>>str2>>str3;
    if (checking(str1)&&checking(str2)&&checking(str3)){
-       std::cout<<"OK";
-       if(combinations(str1,str2,str3)==1)
-           std::cout<<"VASA\n";
-       else if(combinations(str1,str2,str3)==0)
-           std::cout<<"VOVA\n";
+       std::cout<<"OK\n";
+       int result=combinations(str1,str2,str3);
+       if(result==1)
+           std::cout<<"X Petya won\n";
+       else if(result==0)
+           std::cout<<"O Vanya won\n";
        else
-           std::cout<<"Incorrect\n";
+           std::cout<<"Nobody\n";
    }
     else
        std::cout<<"Incorrect\n";
