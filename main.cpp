@@ -41,12 +41,14 @@ int combinations(std::string str1,std::string str2,std::string str3){
     {
         return 1;
     }
-    else if(oLine==1 && Y<=X && oLine!=xLine)
+    else if(oLine==1 && Y==X && oLine!=xLine)
     {
         return 0;
     }
-    else if (Y>X)
+    else if (Y>X||(xLine!=0 && Y>=X)|| oLine==1 && X>=Y)
         return 2;
+    else
+        return 5;
 }
 int main() {
    std::cout<<"Input the playing field in the format.\nValid characters 'X' 'O' and '.'\n";
@@ -54,10 +56,11 @@ int main() {
    std::cout<<".O.\n";
    std::cout<<"..X\n";
    std::string str1,str2,str3;
+    int result=100;
    std::cin >> str1>>str2>>str3;
    if (checking(str1)&&checking(str2)&&checking(str3)){
        std::cout<<"OK\n";
-       int result=100;
+
         result=combinations(str1,str2,str3);
        if(result==1)
            std::cout<<"X Petya won\n";
