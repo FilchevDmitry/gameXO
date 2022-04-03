@@ -12,29 +12,53 @@ bool checking (std::string str){
     return false;
 }
 int combinations(std::string str1,std::string str2,std::string str3){
-   int X=0,Y=0;
+   int X=0,Y=0,X1,X2,X3,u1,u2,u3;
    int xLine=0, oLine=0;
-    for (int i = 0; i < 3; ++i) {
+    for (int i = 0; i < str1.length(); ++i) {
         if (str1[i]=='X'&&str2[i]=='X'&& str3[i]=='X')
             xLine++;
         if(str1[i]=='O'&& str2[i]=='O' && str3[i]=='O')
             oLine++;
     }
-    for (int i = 0; i < 3; ++i) {
-        if (str1[i]=='X') X++;
-        if (str2[i]=='X') X++;
-        if (str3[i]=='X') X++;
-        if (str1[i]=='O') Y++;
-        if (str2[i]=='O') Y++;
-        if (str3[i]=='O') Y++;
+    for (int i = 0; i < str1.length(); ++i) {
+        if (str1[i]=='X')
+        {
+            X++;
+            X1++;
+        }
+        if (str2[i]=='X')
+        {
+            X++;
+            X2++;
+        }
+        if (str3[i]=='X')
+        {
+            X++;
+            X3++;
+        }
+        if (str1[i]=='O')
+        {
+            u1++;
+            Y++;
+        }
+        if (str2[i]=='O')
+        {
+            u2;
+            Y++;
+        }
+        if (str3[i]=='O')
+        {
+            u3++;
+            Y++;
+        }
+        if(i==0)
+            if(str1[i]=='X'&&str2[i+1]=='X'&& str3[i+2]){
+                xLine++;
+            }
     }
-        if (str1[0]=='X'&& str1[1]=='X'&&str1[2]=='X' || str2[0]=='X'&&str2[1]=='X'&&str2[2]=='X'
-            || str3[0]=='X'&&str3[1]=='X'&& str3[2]=='X'|| str1[0]=='X'&& str2[1]=='X'&& str3[2]=='X'
-            || str1[2]=='X'&& str2[1]=='X'&& str3[0]=='X' )
+        if (X1+X2+X3==str1.length())
             xLine++;
-        if(str1[0]=='O'&& str1[1]=='O'&&str1[2]=='O' || str2[0]=='O'&&str2[1]=='O'&&str2[2]=='O'
-            || str3[0]=='O'&&str3[1]=='O'&& str3[2]=='O'|| str1[0]=='O'&& str2[1]=='O'&& str3[2]=='O'
-            || str1[2]=='O'&& str2[1]=='O'&& str3[0]=='O')
+        if(u1+u2+u3==str1.length())
             oLine++;
     if(xLine==1 && X>Y && oLine!=xLine&& oLine==0)
     {
