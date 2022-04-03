@@ -12,7 +12,7 @@ bool checking (std::string str){
     return false;
 }
 int combinations(std::string str1,std::string str2,std::string str3){
-   int X=0,Y=0,X1,X2,X3,u1,u2,u3;
+   int X=0,Y=0,X1=0,Y1=0,X2=0,Y2=0,X3=0,Y3=0,XD=0,OX=0;
    int xLine=0, oLine=0;
     for (int i = 0; i < str1.length(); ++i) {
         if (str1[i]=='X'&&str2[i]=='X'&& str3[i]=='X')
@@ -21,45 +21,60 @@ int combinations(std::string str1,std::string str2,std::string str3){
             oLine++;
     }
     for (int i = 0; i < str1.length(); ++i) {
-        if (str1[i]=='X')
-        {
-            X++;
+        if (str1[i] == 'X') {
             X1++;
-        }
-        if (str2[i]=='X')
-        {
             X++;
+        }
+        if (str1[i] == 'O') {
+            Y1++;
+            Y++;
+        }
+        if (str2[i] == 'X') {
             X2++;
-        }
-        if (str3[i]=='X')
-        {
             X++;
+        }
+        if (str2[i] == 'O') {
+            Y2++;
+            Y++;
+        }
+        if (str3[i] == 'X') {
             X3++;
+            X++;
         }
-        if (str1[i]=='O')
-        {
-            u1++;
+        if (str2[i] == 'O') {
+            Y3++;
             Y++;
         }
-        if (str2[i]=='O')
-        {
-            u2;
-            Y++;
-        }
-        if (str3[i]=='O')
-        {
-            u3++;
-            Y++;
-        }
-        if(i==0)
-            if(str1[i]=='X'&&str2[i+1]=='X'&& str3[i+2]){
-                xLine++;
-            }
-    }
-        if (X1+X2+X3==str1.length())
+        if (X1 == str1.length())
             xLine++;
-        if(u1+u2+u3==str1.length())
+        if (X2 == str2.length())
+            xLine++;
+        if (X3==str3.length())
+            xLine++;
+        if (Y1==str1.length())
             oLine++;
+        if (Y2==str2.length())
+            oLine++;
+        if (Y3==str3.length())
+            oLine++;
+    }
+    std::string strOne;
+    for (int i = 0; i < str1.length(); ++i) {
+        strOne+=str1[i];
+        strOne+=str2[i];
+        strOne+=str3[i];
+    }
+    for (int i = 0; i <= strOne.length(); i+=(str1.length()+1)) {
+        if(strOne[i]=='X')
+            XD++;
+        if(strOne[i]=='O')
+            OX++;
+    }
+    if (XD==str1.length())
+        xLine++;
+    if (OX==str1.length())
+        oLine++;
+
     if(xLine==1 && X>Y && oLine!=xLine&& oLine==0)
     {
         return 1;
