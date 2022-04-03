@@ -57,29 +57,44 @@ int combinations(std::string str1,std::string str2,std::string str3){
             oLine++;
         if (Y3==str3.length())
             oLine++;
+    } if (oLine==0&& xLine==0) {
+        std::string strOne;
+        for (int i = 0; i < str1.length(); ++i) {
+            strOne += str1[i];
+            strOne += str2[i];
+            strOne += str3[i];
+        }
+        for (int i = 0; i <= strOne.length(); i += (str1.length() + 1)) {
+            if (strOne[i] == 'X')
+                XD++;
+            if (strOne[i] == 'O')
+                OX++;
+        }
+        if (XD==str1.length())
+            xLine++;
+        if (OX==str1.length())
+            oLine++;
+        if(oLine==0 || xLine==0) {
+            XD=0;
+            OX=0;
+            for (int i = str1.length()-1; i < strOne.length(); i += str1.length()-1) {
+                if (strOne[i] == 'X')
+                    XD++;
+                if (strOne[i] == 'O')
+                    OX++;
+            }
+            if (XD==str1.length())
+                xLine++;
+            if (OX==str1.length())
+                oLine++;
+        }
     }
-    std::string strOne;
-    for (int i = 0; i < str1.length(); ++i) {
-        strOne+=str1[i];
-        strOne+=str2[i];
-        strOne+=str3[i];
-    }
-    for (int i = 0; i <= strOne.length(); i+=(str1.length()+1)) {
-        if(strOne[i]=='X')
-            XD++;
-        if(strOne[i]=='O')
-            OX++;
-    }
-    if (XD==str1.length())
-        xLine++;
-    if (OX==str1.length())
-        oLine++;
 
-    if(xLine==1 && X>Y && oLine!=xLine&& oLine==0)
+    if(xLine==1 && X>Y && oLine!=xLine&& oLine==0&&Y!=0)
     {
         return 1;
     }
-    else if(oLine==1 && Y==X && oLine!=xLine)
+    else if(oLine==1 && Y==X && oLine!=xLine&&X!=0)
     {
         return 0;
     }
@@ -99,9 +114,9 @@ int main() {
    if (checking(str1)&&checking(str2)&&checking(str3)){
         result=combinations(str1,str2,str3);
        if(result==1)
-           std::cout<<"X Petya won\n";
+           std::cout<<"Petya won\n";
        else if(result==0)
-           std::cout<<"O Vanya won\n";
+           std::cout<<"Vanya won\n";
        else if(result==2)
            std::cout<<"Incorrect\n";
        else
