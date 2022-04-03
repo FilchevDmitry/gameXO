@@ -49,8 +49,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "C:/Users/User/CLionProjects/gameXO/cmake-build-debug",
-		"source" : "C:/Users/User/CLionProjects/gameXO"
+		"build" : "C:/Users/filch/CLionProjects/gameXO/cmake-build-debug",
+		"source" : "C:/Users/filch/CLionProjects/gameXO"
 	},
 	"version" : 
 	{

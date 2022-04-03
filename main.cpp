@@ -19,7 +19,6 @@ int combinations(std::string str1,std::string str2,std::string str3){
             xLine++;
         if(str1[i]=='O'&& str2[i]=='O' && str3[i]=='O')
             oLine++;
-
     }
     for (int i = 0; i < 3; ++i) {
         if (str1[i]=='X') X++;
@@ -59,8 +58,6 @@ int main() {
     int result=100;
    std::cin >> str1>>str2>>str3;
    if (checking(str1)&&checking(str2)&&checking(str3)){
-       std::cout<<"OK\n";
-
         result=combinations(str1,str2,str3);
        if(result==1)
            std::cout<<"X Petya won\n";
