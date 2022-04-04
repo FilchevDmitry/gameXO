@@ -41,7 +41,7 @@ int combinations(std::string str1,std::string str2,std::string str3){
             X3++;
             X++;
         }
-        if (str2[i] == 'O') {
+        if (str3[i] == 'O') {
             Y3++;
             Y++;
         }
@@ -90,7 +90,7 @@ int combinations(std::string str1,std::string str2,std::string str3){
         }
     }
 
-    if(xLine==1 && X>Y && oLine!=xLine&& oLine==0&&Y!=0)
+    if(xLine==1 && X>Y && oLine!=xLine && oLine==0&&Y!=0)
     {
         return 1;
     }
@@ -98,7 +98,7 @@ int combinations(std::string str1,std::string str2,std::string str3){
     {
         return 0;
     }
-    else if (Y>X||(xLine!=0 && Y>=X)|| oLine==1 && X>=Y)
+    else if (Y>X||(xLine!=0 && Y>=X)|| oLine==1 && X>=Y|| X>0&& Y==0||Y>0 &&X==0)
         return 2;
     else
         return 5;
